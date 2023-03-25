@@ -3,30 +3,26 @@ const Agent = require("../models/Agent");
 const bcrypt = require("bcrypt");
 const verify = require("../verifyToken");
 
-
 //UPADTE
 router.put("/:id", verify, async (req, res) => {
   if (req.agent.id === req.params.id || req.agent.isAdmin) {
     if (req.body.password) {
-      req.body.password = bcrypt.hash(
-        req.body.password,
-        'my_secret_key'
-      );//.toString();
+      req.body.password = bcrypt.hash(req.body.password, "my_secret_key"); //.toString();
     }
     try {
-      const  updatedAgent = await Agent.findByIdAndUpdate(
+      const updatedAgent = await Agent.findByIdAndUpdate(
         req.params.id,
         {
-          $set:req.body
+          $set: req.body,
         },
         { new: true }
       );
-      res.redirect("/frontend/housify/src/components/templates/LoginForm.js");
+      res.redirect("/frontend/youhomes/src/components/templates/LoginForm.js");
     } catch (err) {
       res.status(500).json(err);
     }
   } else {
-    res.status(403).json("You can only update your account!")
+    res.status(403).json("You can only update your account!");
   }
 });
 
@@ -40,19 +36,19 @@ router.delete("/:id", verify, async (req, res) => {
       res.status(500).json(err);
     }
   } else {
-    res.status(403).json("You can only delete your account!")
+    res.status(403).json("You can only delete your account!");
   }
 });
 
 //GET
 router.get("/find/:id", async (req, res) => {
-    try {
-      const agent = await agent.findById(req.params.id);
-      const { password, ...info } = agent._doc;
-      res.status(200).json(info);
-    } catch (err) {
-      res.status(500).json(err);
-    }
+  try {
+    const agent = await agent.findById(req.params.id);
+    const { password, ...info } = agent._doc;
+    res.status(200).json(info);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 //GET ALL
@@ -60,13 +56,15 @@ router.get("/", verify, async (req, res) => {
   const query = req.query.new;
   if (req.agent.isAdmin) {
     try {
-      const agent = query ? await Agent.find().sort({_id:-1}).limit(5) : await Agent.find();
+      const agent = query
+        ? await Agent.find().sort({ _id: -1 }).limit(5)
+        : await Agent.find();
       res.status(200).json(agents);
     } catch (err) {
       res.status(500).json(err);
     }
   } else {
-    res.status(403).json("You are not allowed to see all users...")
+    res.status(403).json("You are not allowed to see all users...");
   }
 });
 
@@ -93,20 +91,21 @@ router.get("/stats", async (req, res) => {
   try {
     const data = await Agent.aggregate([
       {
-        $project:{
-          month: {$month: "$createdAt"}
-        }
-      },{
+        $project: {
+          month: { $month: "$createdAt" },
+        },
+      },
+      {
         $group: {
           _id: "$month",
-          total: {$sum:1}
-        }
-      }
+          total: { $sum: 1 },
+        },
+      },
     ]);
-    res.status(200).json(data)
+    res.status(200).json(data);
   } catch (err) {
-    res.status(500).json(err)
+    res.status(500).json(err);
   }
-})
+});
 
 module.exports = router;

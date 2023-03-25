@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/housify.png";
+import logo from "../../assets/youhomes.png";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
@@ -10,18 +10,28 @@ function Footer() {
         {/* footer header */}
         <div className="col-span-2 pt-10 md:pt-0">
           <h2 className="font-medium">Do You Have Questions With Anything?</h2>
-          <p className="py-6 md:pr-10">Receive Updates, discount rates, expert services, payment details, tutorials sent direct to your inbox.</p>
+          <p className="py-6 md:pr-10">
+            Receive Updates, discount rates, expert services, payment details,
+            tutorials sent direct to your inbox.
+          </p>
           <div className="md:pr-10">
             <form className="relative pb-4" method="Post" action="">
-              <input type={"email"} value={""} className="email rounded-full py-4 px-6 w-full text-black outline-0" placeholder="Enter email" />
-              <button className="absolute right-0 rounded-full rounded-l-none py-4 px-6 bg-purple-500 hover:bg-purple-700">Subscribe</button>
+              <input
+                type={"email"}
+                value={""}
+                className="email rounded-full py-4 px-6 w-full text-black outline-0"
+                placeholder="Enter email"
+              />
+              <button className="absolute right-0 rounded-full rounded-l-none py-4 px-6 bg-purple-500 hover:bg-purple-700">
+                Subscribe
+              </button>
             </form>
           </div>
           <div className="flex flex-row md:flex-row justify-between py-4 items-center">
             {/* brand logo goes to top on click */}
             <div className="">
               <a className="" href="/">
-                <img className="h-8 w-70" src={logo} alt="Housify Logo" />
+                <img className="h-8 w-70" src={logo} alt="youhomes Logo" />
               </a>
             </div>
 
@@ -82,7 +92,7 @@ function Footer() {
       </div>
 
       <div className="text-center py-6 text-black text-xl">
-        <p>Copyright Housify 2022</p>
+        <p>Copyright youhomes 2022</p>
       </div>
     </div>
   );
