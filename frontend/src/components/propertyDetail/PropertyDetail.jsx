@@ -58,7 +58,7 @@ const PropertyDetail = () => {
     <div className={classes.container}>
       <div className={classes.wrapper}>
         <div className={classes.left}>
-          <img src={`http://localhost:5000/images/${propertyDetail?.img}`} />
+          <img src={`http://localhost:8080/images/${propertyDetail?.img}`} />
         </div>
         <div className={classes.right}>
           <h3 className={classes.title}>

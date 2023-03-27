@@ -33,12 +33,12 @@ const FeaturedProperties = () => {
                     {featuredProperties?.map((property) => (
                         <div className={classes.featuredProperty} key={property._id}>
                             <Link to={`/propertyDetail/${property._id}`} className={classes.imgContainer}>
-                                <img src={`http://localhost:5000/images/${property?.img}`} alt="" />
+                                <img src={`http://localhost:8080/images/${property?.img}`} alt="" />
                             </Link>
                             <div className={classes.details}>
                                 <div className={classes.priceAndOwner}>
                                     <span className={classes.price}>$ {property?.price}</span>
-                                    <img src={`http://localhost:5000/images/${property?.currentOwner?.profileImg}`} className={classes.owner} />
+                                    <img src={`http://localhost:8080/images/${property?.currentOwner?.profileImg}`} className={classes.owner} />
                                 </div>
                                 <div className={classes.moreDetails}>
                                     <span>{property?.beds} <FaBed className={classes.icon} /></span>

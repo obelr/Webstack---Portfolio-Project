@@ -59,7 +59,7 @@ form>label:hover {
 
 form>button {
     outline: none;
-    background-color: blue;
+    background-color: gray;
     color: #fff;
     border-radius: 12px;
     padding: 0.5rem 1.25rem;
@@ -70,8 +70,8 @@ form>button {
 
 form>button:hover {
     background-color: #fff;
-    border-color: blue;
-    color: blue;
+    border-color: gray;
+    color: gray;
 }
 
 form > p  {
