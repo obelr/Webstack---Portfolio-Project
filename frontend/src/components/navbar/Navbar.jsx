@@ -152,7 +152,7 @@ const Navbar = () => {
           {showMobileNav &&
             <div className={classes.navigation}>
               <Link to='/' onClick={scrollToTop} className={classes.left}>
-                Real Estate <BsHouseDoor />
+               Your Homes <BsHouseDoor />
               </Link>
               <AiOutlineClose className={classes.mobileCloseIcon} onClick={() => setShowMobileNav(false)} />
               <ul className={classes.center}>

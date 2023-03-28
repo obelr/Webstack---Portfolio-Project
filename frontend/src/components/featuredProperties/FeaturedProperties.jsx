@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { request } from '../../util/fetchAPI'
 
+
 const FeaturedProperties = () => {
     const [featuredProperties, setFeaturedProperties] = useState([])
 
@@ -14,12 +15,15 @@ const FeaturedProperties = () => {
             try {
                 const data = await request("/property/find/featured", "GET")
                 setFeaturedProperties(data)
+                
             } catch (error) {
                 console.error(error)
             }
         }
         fetchFeatured()
     }, [])
+
+    console.log(featuredProperties)
 
 
     return (

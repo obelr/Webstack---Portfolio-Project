@@ -23,7 +23,10 @@ const PropertyDetail = () => {
   // email js TODO ENV VARIABLES
   const serviceID = process.env.REACT_APP_SERVICE_ID
   const templateID = process.env.REACT_APP_TEMPLATE_ID
+  const publickkey =  process.env.REACT_APP_PUBLIC_KEY
 
+
+  console.log(serviceID,templateID,publickkey)
   useEffect(() => {
     const fetchDetails = async () => {
       try {
